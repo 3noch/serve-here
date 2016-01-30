@@ -11,8 +11,9 @@ import Options.Applicative
 type Api = Raw
 
 mainServer :: Options -> IO ()
-mainServer (Options dir port) = Warp.run port $
-  serve (Proxy :: Proxy Api) (serveDirectory dir)
+mainServer (Options dir port) = do
+  putStrLn $ "Serving '" ++ dir ++ "' on port " ++ show port
+  Warp.run port $ serve (Proxy :: Proxy Api) (serveDirectory dir)
 
 data Options = Options
   { _dir  :: String
