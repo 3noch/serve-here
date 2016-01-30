@@ -7,12 +7,11 @@ import Network.Wai (Application)
 import qualified Network.Wai.Handler.Warp as Warp
 import Options.Applicative
 
-type Api = Raw
 
 mainServer :: Options -> IO ()
 mainServer (Options dir port) = do
   putStrLn $ "Serving '" ++ dir ++ "' on port " ++ show port
-  Warp.run port $ serve (Proxy :: Proxy Api) (serveDirectory dir)
+  Warp.run port $ serve (Proxy :: Proxy Raw) (serveDirectory dir)
 
 data Options = Options
   { _dir  :: String
