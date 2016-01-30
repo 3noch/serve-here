@@ -1,6 +1,5 @@
 module Main where
 
-import Data.Maybe (maybe)
 import Servant (Proxy(..), serve, Server)
 import Servant.API (Raw)
 import Servant.Utils.StaticFiles (serveDirectory)
